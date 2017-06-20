@@ -1,5 +1,6 @@
 package com.longestword.reduce;
 
+import com.longestword.common.Constants;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -8,8 +9,6 @@ import java.io.IOException;
 import java.util.Iterator;
 
 public class LongestWordReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
-
-    static final Text KEY = new Text("Longest");
 
     @Override
     protected void reduce(Text key, Iterable<IntWritable> values, Context context)
@@ -25,6 +24,6 @@ public class LongestWordReducer extends Reducer<Text, IntWritable, Text, IntWrit
             }
         }
 
-        context.write(KEY, maxLength);
+        context.write(Constants.KEY, maxLength);
     }
 }

@@ -1,5 +1,6 @@
 package com.longestword.map;
 
+import com.longestword.common.Constants;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -9,8 +10,6 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public final class LongestWordMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
-
-    static final Text KEY = new Text("Longest");
 
     @Override
     protected void map(LongWritable key, Text value, Context context)
@@ -26,6 +25,6 @@ public final class LongestWordMapper extends Mapper<LongWritable, Text, Text, In
             }
         }
 
-        context.write(KEY, new IntWritable(longestWord.getLength()));
+        context.write(Constants.KEY, new IntWritable(longestWord.getLength()));
     }
 }
