@@ -15,16 +15,24 @@ public final class LongestWordMapper extends Mapper<LongWritable, Text, Text, In
     protected void map(LongWritable key, Text value, Context context)
             throws IOException, InterruptedException {
 
-        StringTokenizer itr = new StringTokenizer(value.toString());
-        Text longestWord = new Text(itr.nextToken());
+        IntWritable result = new IntWritable(0);
+        String stringValue = value.toString();
 
-        while (itr.hasMoreTokens()) {
-            int length = itr.nextToken().length();
-            if (longestWord.getLength() < length) {
-                longestWord.set(value);
+        if (stringValue != null && !stringValue.trim().isEmpty()) {
+
+            StringTokenizer itr = new StringTokenizer(stringValue, " ");
+            Text longestWord = new Text(itr.nextToken());
+
+            while (itr.hasMoreTokens()) {
+                String token = itr.nextToken();
+                int length = token.length();
+                if (longestWord.getLength() < length) {
+                    longestWord.set(token);
+                }
             }
+            result.set(longestWord.getLength());
         }
 
-        context.write(Constants.KEY, new IntWritable(longestWord.getLength()));
+        context.write(Constants.KEY, result);
     }
 }
