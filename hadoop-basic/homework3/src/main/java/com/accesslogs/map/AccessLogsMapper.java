@@ -7,7 +7,13 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
 
-public class AccessLogsMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
+public final class AccessLogsMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
+
+    private final LogParser parser;
+
+    public AccessLogsMapper() {
+        parser = new LogParser();
+    }
 
     @Override
     protected void map(LongWritable key, Text value, Context context)
@@ -19,8 +25,9 @@ public class AccessLogsMapper extends Mapper<LongWritable, Text, Text, LongWrita
         String userAgentString = request.substring(request.indexOf("\""), request.lastIndexOf("\""));
 
         UserAgent userAgent = UserAgent.parseUserAgentString(userAgentString);
-        LongWritable bytes = new LongWritable(userAgent.get)
+        LongWritable bytes = new LongWritable(parser.getBytes(request));
 
-        context.write(new Text(ip), );
+
+        context.write(new Text(ip), bytes);
     }
 }

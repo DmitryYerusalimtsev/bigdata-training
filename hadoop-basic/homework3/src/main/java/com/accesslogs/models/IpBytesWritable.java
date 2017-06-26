@@ -1,6 +1,5 @@
 package com.accesslogs.models;
 
-import eu.bitwalker.useragentutils.UserAgent;
 import org.apache.hadoop.io.Writable;
 
 import java.io.DataInput;
@@ -9,13 +8,16 @@ import java.io.IOException;
 
 public class IpBytesWritable implements Writable {
 
-    private int avgBytes;
+    private double avgBytes;
     private long totalBytes;
 
-    public IpBytesWritable(UserAgent userAgent)
+    public IpBytesWritable(double avgBytes, long totalBytes) {
+        this.avgBytes = avgBytes;
+        this.totalBytes = totalBytes;
+    }
 
     public void write(DataOutput dataOutput) throws IOException {
-        dataOutput.writeInt(avgBytes);
+        dataOutput.writeDouble(avgBytes);
         dataOutput.writeLong(totalBytes);
     }
 
