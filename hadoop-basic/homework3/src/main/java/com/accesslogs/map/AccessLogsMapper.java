@@ -9,11 +9,7 @@ import java.io.IOException;
 
 public final class AccessLogsMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
 
-    private final LogParser parser;
-
-    public AccessLogsMapper() {
-        parser = new LogParser();
-    }
+    private final LogParser parser = new LogParser();
 
     @Override
     protected void map(LongWritable key, Text value, Context context)
@@ -22,12 +18,13 @@ public final class AccessLogsMapper extends Mapper<LongWritable, Text, Text, Lon
         String request = value.toString();
 
         String ip = request.substring(0, request.indexOf(" "));
-        String userAgentString = request.substring(request.indexOf("\""), request.lastIndexOf("\""));
+        //String userAgentString = request.substring(request.indexOf("\""), request.lastIndexOf("\""));
 
-        UserAgent userAgent = UserAgent.parseUserAgentString(userAgentString);
-        LongWritable bytes = new LongWritable(parser.getBytes(request));
+        //UserAgent userAgent = UserAgent.parseUserAgentString(userAgentString);
 
-
-        context.write(new Text(ip), bytes);
+        long bytes = parser.getBytes(request);
+        if (bytes != Constants.BAD_INPUT) {
+            context.write(new Text(ip), new LongWritable(bytes));
+        }
     }
 }
