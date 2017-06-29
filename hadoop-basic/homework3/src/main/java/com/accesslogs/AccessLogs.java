@@ -43,6 +43,10 @@ public final class AccessLogs extends Configured implements Tool {
             hdfsOutputFileOrDirectory = args[1];
         }
 
+        // Enable compression for results using Snappy.
+        conf.set("mapreduce.map.output.compress", "true");
+        conf.set("mapred.map.output.compress.codec", "org.apache.hadoop.io.compress.SnappyCodec");
+
         Job job = Job.getInstance(conf);
 
         job.setJarByClass(getClass());
