@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c7b9436-6445-42d5-b09a-5574846ed8d3" name="Default" comment="Updated Map/Reduce logic.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/accesslogs/models/CsvOutputFormat.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/accesslogs/TestConstants.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/accesslogs/map/AccessLogsMapperTests.java" />
+    <list default="true" id="1c7b9436-6445-42d5-b09a-5574846ed8d3" name="Default" comment="Created custom output format (CSV).">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/accesslogs/counters/AgentCounter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java" afterPath="$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/accesslogs/map/LogParserTests.java" afterPath="$PROJECT_DIR$/src/test/java/com/accesslogs/map/LogParserTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CsvOutputFormat.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CsvOutputFormat.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/models/CsvOutputFormat.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,11 +47,44 @@
       <file leaf-file-name="AccessLogs.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="58" column="53" lean-forward="false" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
+            <state relative-caret-position="1156">
+              <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AgentCounter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/counters/AgentCounter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccessLogsMapper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="34" column="56" lean-forward="true" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+              <folding>
+                <element signature="e#1705#1706#0" expanded="true" />
+                <element signature="e#1768#1769#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Manufacturer.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/eu/bitwalker/UserAgentUtils/1.20/UserAgentUtils-1.20.jar!/eu/bitwalker/useragentutils/Manufacturer.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,24 +109,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LongestWordReducerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../homework1/src/test/java/com/longestword/reduce/LongestWordReducerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -111,6 +130,8 @@
       <find>IntWritabl</find>
       <find>IntWritable</find>
       <find>-</find>
+      <find>Trident</find>
+      <find>name</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -132,14 +153,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/models/IpBytesWritable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/map/Constants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/map/LogParser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/accesslogs/map/LogParserTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/accesslogs/map/TestConstants.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/accesslogs/map/AccessLogsMapperTests.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/accesslogs/TestConstants.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/accesslogs/reduce/AccessLogsReducerTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/models/CsvOutputFormat.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/counters/AccessLogsCounter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/counters/AgentCounter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java" />
       </list>
     </option>
   </component>
@@ -380,6 +403,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="map" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="homework3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="homework3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="accesslogs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="counters" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -835,7 +888,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498717010147</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Created custom output format (CSV).">
+      <created>1498726355470</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1498726355470</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -903,7 +963,8 @@
     <MESSAGE value="Added mapper class." />
     <MESSAGE value="Updated Map/Reduce logic." />
     <MESSAGE value="Added unit tests for Map/Reduce logic." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added unit tests for Map/Reduce logic." />
+    <MESSAGE value="Created custom output format (CSV)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created custom output format (CSV)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -924,37 +985,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/accesslogs/map/LogParserTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="5" lean-forward="false" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19" column="54" lean-forward="false" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/reduce/AccessLogsReducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -977,6 +1007,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="46" column="77" lean-forward="false" selection-start-line="46" selection-start-column="74" selection-end-line="46" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1026,6 +1057,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="46" column="77" lean-forward="false" selection-start-line="46" selection-start-column="74" selection-end-line="46" selection-end-column="77" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1048,6 +1080,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="88" lean-forward="true" selection-start-line="20" selection-start-column="88" selection-end-line="20" selection-end-column="88" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1133,13 +1166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/hadoop/hadoop-mapreduce-client-core/2.7.3/hadoop-mapreduce-client-core-2.7.3.jar!/org/apache/hadoop/mapreduce/Job.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="503" column="5" lean-forward="true" selection-start-line="503" selection-start-column="5" selection-end-line="503" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.10/junit-4.10.jar!/org/junit/runners/model/FrameworkMethod.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1169,13 +1195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/input/000000">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="30" column="10" lean-forward="false" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/map/LogParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1195,6 +1214,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1202,14 +1224,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="539">
           <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="63" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="63" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1285,22 +1302,84 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/models/CsvOutputFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="58" column="53" lean-forward="false" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/models/CsvOutputFormat.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/hadoop/hadoop-mapreduce-client-core/2.7.3/hadoop-mapreduce-client-core-2.7.3.jar!/org/apache/hadoop/mapreduce/Job.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="175">
+          <caret line="443" column="5" lean-forward="true" selection-start-line="443" selection-start-column="5" selection-end-line="443" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/eu/bitwalker/UserAgentUtils/1.20/UserAgentUtils-1.20.jar!/eu/bitwalker/useragentutils/Manufacturer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/counters/AgentCounter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/input/000000">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="98" column="104" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/eu/bitwalker/UserAgentUtils/1.20/UserAgentUtils-1.20.jar!/eu/bitwalker/useragentutils/BrowserType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/eu/bitwalker/UserAgentUtils/1.20/UserAgentUtils-1.20.jar!/eu/bitwalker/useragentutils/Browser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="272" column="33" lean-forward="true" selection-start-line="272" selection-start-column="33" selection-end-line="272" selection-end-column="33" />
+          <folding>
+            <element signature="e#42496#42497#0" expanded="true" />
+            <element signature="e#42536#42537#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="34" column="56" lean-forward="true" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+          <folding>
+            <element signature="e#1705#1706#0" expanded="true" />
+            <element signature="e#1768#1769#0" expanded="true" />
           </folding>
         </state>
       </provider>
