@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c7b9436-6445-42d5-b09a-5574846ed8d3" name="Default" comment="Created custom output format (CSV).">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/accesslogs/counters/AgentCounter.java" />
+    <list default="true" id="1c7b9436-6445-42d5-b09a-5574846ed8d3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java" afterPath="$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -44,14 +41,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccessLogs.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AccessLogs.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="182">
+              <caret line="14" column="71" lean-forward="true" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -66,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccessLogsMapper.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AccessLogsMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="34" column="56" lean-forward="true" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+            <state relative-caret-position="374">
+              <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
               <folding>
                 <element signature="e#1705#1706#0" expanded="true" />
                 <element signature="e#1768#1769#0" expanded="true" />
@@ -159,10 +154,10 @@
         <option value="$PROJECT_DIR$/src/test/java/com/accesslogs/TestConstants.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/accesslogs/reduce/AccessLogsReducerTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/models/CsvOutputFormat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/counters/AccessLogsCounter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/counters/AgentCounter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java" />
       </list>
     </option>
   </component>
@@ -895,7 +890,21 @@
       <option name="project" value="LOCAL" />
       <updated>1498726355470</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added counters to logic.">
+      <created>1498730410490</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1498730410490</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added Snappy compression.">
+      <created>1498731174855</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1498731174855</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -923,7 +932,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -934,7 +942,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27292112" sideWeight="0.49417636" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -964,7 +972,9 @@
     <MESSAGE value="Updated Map/Reduce logic." />
     <MESSAGE value="Added unit tests for Map/Reduce logic." />
     <MESSAGE value="Created custom output format (CSV)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created custom output format (CSV)." />
+    <MESSAGE value="Added counters to logic." />
+    <MESSAGE value="Added Snappy compression." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Snappy compression." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1320,16 +1330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="68" column="1" lean-forward="false" selection-start-line="68" selection-start-column="1" selection-end-line="68" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/eu/bitwalker/UserAgentUtils/1.20/UserAgentUtils-1.20.jar!/eu/bitwalker/useragentutils/Manufacturer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1375,12 +1375,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/map/AccessLogsMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="34" column="56" lean-forward="true" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+        <state relative-caret-position="374">
+          <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
           <folding>
             <element signature="e#1705#1706#0" expanded="true" />
             <element signature="e#1768#1769#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/accesslogs/AccessLogs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="14" column="71" lean-forward="true" selection-start-line="14" selection-start-column="71" selection-end-line="14" selection-end-column="71" />
+          <folding />
         </state>
       </provider>
     </entry>
