@@ -1,6 +1,7 @@
 package com.accesslogs;
 
 import com.accesslogs.map.AccessLogsMapper;
+import com.accesslogs.models.CsvOutputFormat;
 import com.accesslogs.models.IpBytesWritable;
 import com.accesslogs.reduce.AccessLogsReducer;
 import org.apache.hadoop.conf.Configuration;
@@ -12,7 +13,6 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -52,7 +52,7 @@ public final class AccessLogs extends Configured implements Tool {
         FileOutputFormat.setOutputPath(job, new Path(hdfsOutputFileOrDirectory));
 
         job.setInputFormatClass(TextInputFormat.class);
-        job.setOutputFormatClass(TextOutputFormat.class);
+        job.setOutputFormatClass(CsvOutputFormat.class);
 
         job.setMapperClass(AccessLogsMapper.class);
         //job.setCombinerClass(AccessLogsReducer.class);
