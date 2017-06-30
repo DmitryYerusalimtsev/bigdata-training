@@ -1,5 +1,7 @@
 USE flights;
 
+SET mapred.reduce.tasks = 1
+
 SELECT c.description AS carrier, f.flights_count AS flights_count 
 FROM carriers AS c
 JOIN (

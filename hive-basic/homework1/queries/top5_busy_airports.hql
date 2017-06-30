@@ -1,5 +1,7 @@
 USE flights;
 
+SET mapred.reduce.tasks = 1
+
 SELECT a.airport, SUM(f.flights_count) AS flights_count 
 FROM airports AS a
 JOIN (
