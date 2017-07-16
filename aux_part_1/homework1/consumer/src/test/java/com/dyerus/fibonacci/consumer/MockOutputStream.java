@@ -32,9 +32,5 @@ class MockOutputStream extends OutputStream {
             default:
                 throw new RuntimeException("Test failed.");
         }
-
-        if (messagesCount == 2) {
-            mockConsumer.close();
-        }
     }
 }
