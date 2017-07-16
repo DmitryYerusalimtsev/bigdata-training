@@ -6,7 +6,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Collections;
 
 final class FibonacciConsumer {
 
@@ -21,7 +20,6 @@ final class FibonacciConsumer {
         this.consumer = consumer;
         this.out = out;
         this.messagesThreshold = messagesThreshold;
-        consumer.subscribe(Collections.singletonList(Constants.TOPIC));
     }
 
     void start() {

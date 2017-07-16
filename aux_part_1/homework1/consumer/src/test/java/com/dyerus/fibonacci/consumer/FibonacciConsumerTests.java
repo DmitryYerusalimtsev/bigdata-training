@@ -7,6 +7,7 @@ import org.apache.kafka.common.TopicPartition;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.HashMap;
 
 public class FibonacciConsumerTests {
@@ -17,21 +18,21 @@ public class FibonacciConsumerTests {
     public void setUp() {
         mockConsumer = new MockConsumer<>(OffsetResetStrategy.EARLIEST);
 
-        MockOutputStream mockStream = new MockOutputStream();
+        MockOutputStream mockStream = new MockOutputStream(mockConsumer);
         consumer = new FibonacciConsumer(mockConsumer, mockStream, 2);
     }
 
     @Test
     public void testConsumer() {
 
-        //mockConsumer.assign(Collections.singletonList(new TopicPartition(Constants.TOPIC, 0)));
+        mockConsumer.assign(Collections.singletonList(new TopicPartition(Constants.TOPIC, 0)));
 
         HashMap<TopicPartition, Long> beginningOffsets = new HashMap<>();
         beginningOffsets.put(new TopicPartition(Constants.TOPIC, 0), 0L);
         mockConsumer.updateBeginningOffsets(beginningOffsets);
 
-        mockConsumer.addRecord(new ConsumerRecord<String, Integer>(Constants.TOPIC,
-                0, 0L, null, 1));
+        mockConsumer.addRecord(new ConsumerRecord<String, Integer>(Constants.TOPIC, 0,
+                0L, null, 1));
         mockConsumer.addRecord(new ConsumerRecord<String, Integer>(Constants.TOPIC, 0,
                 1L, null, 1));
         mockConsumer.addRecord(new ConsumerRecord<String, Integer>(Constants.TOPIC, 0,

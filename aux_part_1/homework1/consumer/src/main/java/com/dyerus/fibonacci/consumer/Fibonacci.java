@@ -3,6 +3,7 @@ package com.dyerus.fibonacci.consumer;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
+import java.util.Collections;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -39,6 +40,8 @@ public class Fibonacci {
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.IntegerSerializer");
 
-        return new KafkaConsumer<>(props);
+        Consumer<K, V> consumer = new KafkaConsumer<>(props);
+        consumer.subscribe(Collections.singletonList(Constants.TOPIC));
+        return consumer;
     }
 }
