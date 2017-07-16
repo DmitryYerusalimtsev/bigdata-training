@@ -1,5 +1,9 @@
 package com.dyerus.fibonacci.consumer;
 
+import org.apache.kafka.clients.consumer.Consumer;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+
+import java.util.Properties;
 import java.util.Scanner;
 
 public class Fibonacci {
@@ -11,7 +15,9 @@ public class Fibonacci {
         }
 
         int n = Integer.parseInt(args[0]);
-        FibonacciConsumer consumer = new FibonacciConsumer(n);
+
+        Consumer<String, Integer> cons = createConsumer();
+        FibonacciConsumer consumer = new FibonacciConsumer(cons, n);
         consumer.start();
 
         Scanner in = new Scanner(System.in);
@@ -21,5 +27,18 @@ public class Fibonacci {
             consumer.stop();
             break;
         }
+    }
+
+    private static <K, V> Consumer<K, V> createConsumer() {
+        Properties props = new Properties();
+        props.put("bootstrap.servers", "localhost:9092");
+        props.put("group.id", "fibonacci");
+        props.put("enable.auto.commit", "true");
+        props.put("auto.commit.interval.ms", "1000");
+        props.put("session.timeout.ms", "30000");
+        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("value.deserializer", "org.apache.kafka.common.serialization.IntegerSerializer");
+
+        return new KafkaConsumer<>(props);
     }
 }
