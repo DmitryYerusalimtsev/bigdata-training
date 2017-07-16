@@ -4,22 +4,27 @@ import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Collections;
 
-public final class FibonacciConsumer {
+final class FibonacciConsumer {
 
-    private final int messagesThreshold;
     private final Consumer<String, Integer> consumer;
+    private final OutputStream out;
+    private final int messagesThreshold;
 
     private static final int TIMEOUT = 10;
 
-    public FibonacciConsumer(Consumer<String, Integer> consumer, int messagesThreshold) {
+    FibonacciConsumer(Consumer<String, Integer> consumer,
+                      OutputStream out, int messagesThreshold) {
         this.consumer = consumer;
+        this.out = out;
         this.messagesThreshold = messagesThreshold;
-        consumer.subscribe(Arrays.asList(Constants.TOPIC));
+        consumer.subscribe(Collections.singletonList(Constants.TOPIC));
     }
 
-    public void start() {
+    void start() {
         int messageCount = 0;
         int sum = 0;
 
@@ -27,21 +32,23 @@ public final class FibonacciConsumer {
             while (true) {
                 ConsumerRecords<String, Integer> records = consumer.poll(TIMEOUT);
                 for (ConsumerRecord<String, Integer> record : records) {
-                    sum += record.value().intValue();
+                    sum += record.value();
                     messageCount++;
 
                     if (messageCount == messagesThreshold) {
-                        System.out.printf("Sum = %d", sum);
+                        out.write(sum);
                         messageCount = 0;
                     }
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             stop();
         }
     }
 
-    public void stop() {
+    void stop() {
         consumer.close();
     }
 }

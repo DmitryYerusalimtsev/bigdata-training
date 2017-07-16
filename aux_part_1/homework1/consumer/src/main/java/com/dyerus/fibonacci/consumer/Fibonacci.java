@@ -17,7 +17,7 @@ public class Fibonacci {
         int n = Integer.parseInt(args[0]);
 
         Consumer<String, Integer> cons = createConsumer();
-        FibonacciConsumer consumer = new FibonacciConsumer(cons, n);
+        FibonacciConsumer consumer = new FibonacciConsumer(cons, System.out, n);
         consumer.start();
 
         Scanner in = new Scanner(System.in);
