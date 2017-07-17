@@ -1,0 +1,1 @@
+chmod o+rw ./custom_data/mysql.access_credentials
