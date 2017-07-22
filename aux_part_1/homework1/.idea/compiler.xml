@@ -11,9 +11,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="aux_part_1" target="1.7" />
-      <module name="consumer" target="1.7" />
-      <module name="producer" target="1.7" />
+      <module name="aux_part_1" target="1.8" />
+      <module name="consumer" target="1.8" />
+      <module name="producer" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -19,7 +19,11 @@ public class Fibonacci {
 
         Consumer<String, Integer> cons = createConsumer();
         FibonacciConsumer consumer = new FibonacciConsumer(cons, System.out, n);
-        consumer.start();
+        try {
+            consumer.start();
+        } finally {
+            consumer.stop();
+        }
 
         Scanner in = new Scanner(System.in);
 
@@ -32,13 +36,13 @@ public class Fibonacci {
 
     private static <K, V> Consumer<K, V> createConsumer() {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "sandbox.hortonworks.com:6667");
         props.put("group.id", "fibonacci");
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
         props.put("session.timeout.ms", "30000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("value.deserializer", "org.apache.kafka.common.serialization.IntegerSerializer");
+        props.put("value.deserializer", "org.apache.kafka.common.serialization.IntegerDeserializer");
 
         Consumer<K, V> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Collections.singletonList(Constants.TOPIC));
