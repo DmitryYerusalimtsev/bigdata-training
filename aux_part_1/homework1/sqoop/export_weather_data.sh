@@ -1,0 +1,2 @@
+sqoop export --connect jdbc:mysql://localhost/weatherdb -table weather --username root --password hadoop --export-dir
+ /homeworks-data/weather-table -m 8 --input-fields-terminated-by ',' --lines-terminated-by '\n'
