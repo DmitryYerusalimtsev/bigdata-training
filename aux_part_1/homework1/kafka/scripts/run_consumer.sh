@@ -1,0 +1,1 @@
+java -cp /custom_data/jars/consumer-1.0-SNAPSHOT-jar-with-dependencies.jar com.dyerus.fibonacci.consumer.Fibonacci 10

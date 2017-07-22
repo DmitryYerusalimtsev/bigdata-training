@@ -1,0 +1,1 @@
+java -cp \\DIMON02\Users\Public\jars\producer-1.0-SNAPSHOT-jar-with-dependencies.jar com.dyerus.fibonacci.producer.Fibonacci 10000
