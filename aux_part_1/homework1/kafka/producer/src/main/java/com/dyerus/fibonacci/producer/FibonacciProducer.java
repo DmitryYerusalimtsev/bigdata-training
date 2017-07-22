@@ -37,8 +37,8 @@ public class FibonacciProducer {
         try {
             ProducerRecord<String, Integer> record = new ProducerRecord<>(Constants.TOPIC, Integer.valueOf(number));
             producer.send(record);
-        } finally {
-            stop();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
         }
     }
 }

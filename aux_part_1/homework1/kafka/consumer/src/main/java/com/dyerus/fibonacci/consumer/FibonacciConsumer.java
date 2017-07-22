@@ -34,6 +34,7 @@ final class FibonacciConsumer {
                     messageCount++;
 
                     if (messageCount == messagesThreshold) {
+                        System.out.println(sum);
                         out.write(sum);
                         messageCount = 0;
                     }
@@ -41,8 +42,6 @@ final class FibonacciConsumer {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            stop();
         }
     }
 

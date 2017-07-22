@@ -17,12 +17,16 @@ public class Fibonacci {
 
         Producer<String, Integer> prod = createProducer();
         FibonacciProducer producer = new FibonacciProducer(prod, n);
-        producer.start();
+        try {
+            producer.start();
+        } finally {
+            producer.stop();
+        }
     }
 
     private static <K, V> Producer<K, V> createProducer() {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "sandbox.hortonworks.com:6667");
         props.put("acks", "all");
         props.put("retries", 0);
         props.put("batch.size", 16384);
