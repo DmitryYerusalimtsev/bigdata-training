@@ -1,6 +1,6 @@
 package com.epam.hubd.spark.scala.core.homework
 
-import com.epam.hubd.spark.scala.core.homework.domain.{BidItem, EnrichedItem}
+import com.epam.hubd.spark.scala.core.homework.domain.{BidError, BidItem, EnrichedItem}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -37,7 +37,7 @@ object MotelsHomeRecommendation {
       * Collect the errors and save the result.
       * Hint: Use the BideError case class
       */
-    val erroneousRecords: RDD[String] = getErroneousRecords(rawBids)
+    val erroneousRecords: RDD[String] = getErroneousRecords(sc, rawBids)
     erroneousRecords.saveAsTextFile(s"$outputBasePath/$ERRONEOUS_DIR")
 
     /**
@@ -69,19 +69,29 @@ object MotelsHomeRecommendation {
       * Hint: When determining the maximum if the same price appears twice then keep the first entity you found
       * with the given price.
       */
-    val enriched:RDD[EnrichedItem] = getEnriched(bids, motels)
+    val enriched: RDD[EnrichedItem] = getEnriched(bids, motels)
     enriched.saveAsTextFile(s"$outputBasePath/$AGGREGATED_DIR")
   }
 
-  def getRawBids(sc: SparkContext, bidsPath: String): RDD[List[String]] = ???
+  def getRawBids(sc: SparkContext, bidsPath: String): RDD[List[String]] = {
+    val initialRDD = sc.textFile(bidsPath)
+    initialRDD.map(s => s.split(',').toList)
+  }
 
-  def getErroneousRecords(rawBids: RDD[List[String]]): RDD[String] = ???
+  def getErroneousRecords(sc: SparkContext, rawBids: RDD[List[String]]): RDD[String] = {
+    val errorsRDD = rawBids.filter(bid => bid(2).startsWith("ERROR_"))
+      .map(bid => BidError(bid(1), bid(2)))
+
+    val errorsCountedRDD = errorsRDD.countByValue()
+    val result = errorsCountedRDD.map(raw => s"${raw._1.toString},${raw._2}")
+    sc.parallelize(result.toSeq)
+  }
 
   def getExchangeRates(sc: SparkContext, exchangeRatesPath: String): Map[String, Double] = ???
 
   def getBids(rawBids: RDD[List[String]], exchangeRates: Map[String, Double]): RDD[BidItem] = ???
 
-  def getMotels(sc:SparkContext, motelsPath: String): RDD[(String, String)] = ???
+  def getMotels(sc: SparkContext, motelsPath: String): RDD[(String, String)] = ???
 
   def getEnriched(bids: RDD[BidItem], motels: RDD[(String, String)]): RDD[EnrichedItem] = ???
 }
