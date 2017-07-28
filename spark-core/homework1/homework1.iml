@@ -15,6 +15,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="scala-sdk-2.10.6" level="application" />
+    <orderEntry type="library" name="scala-sdk-2.12.2" level="application" />
+    <orderEntry type="library" name="scala-sdk-2.10.6" level="application" />
     <orderEntry type="library" name="Maven: com.github.nscala-time:nscala-time_2.11:2.12.0" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.11.8" level="project" />
     <orderEntry type="library" name="Maven: joda-time:joda-time:2.9.3" level="project" />
@@ -177,7 +179,5 @@
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-yarn-server-web-proxy:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-minicluster:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-mapreduce-client-hs:2.6.0" level="project" />
-    <orderEntry type="library" name="scala-sdk-2.12.2" level="application" />
-    <orderEntry type="library" name="scala-sdk-2.10.6" level="application" />
   </component>
 </module>
