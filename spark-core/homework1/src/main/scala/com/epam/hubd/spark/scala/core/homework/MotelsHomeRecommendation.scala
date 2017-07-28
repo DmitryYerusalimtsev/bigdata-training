@@ -176,13 +176,12 @@ object MotelsHomeRecommendation {
     val formattedDate = convertDateFormat(date)
 
     !isEmpty(price) match {
-      case true => {
+      case true =>
         val exchanged = price.toDouble * rate
         val bd = BigDecimal(exchanged)
         val rounded = bd.round(new MathContext(3)).doubleValue()
 
         Some(BidItem(id, formattedDate, loSa, rounded))
-      }
       case false => None
     }
   }
