@@ -21,7 +21,7 @@ object MotelsHomeRecommendation {
 
     val conf = new SparkConf()
       .setAppName("motels-home-recommendation")
-      .setMaster("local[*]")
+      //.setMaster("local[*]")
 
     val sc = new SparkContext(conf)
 
