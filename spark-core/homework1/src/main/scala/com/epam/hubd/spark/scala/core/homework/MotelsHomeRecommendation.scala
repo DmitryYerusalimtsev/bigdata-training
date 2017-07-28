@@ -11,8 +11,6 @@ object MotelsHomeRecommendation {
   val ERRONEOUS_DIR: String = "erroneous"
   val AGGREGATED_DIR: String = "aggregated"
 
-  //val isIDE = ManagementFactory.getRuntimeMXBean.getInputArguments.toString.contains("IntelliJ IDEA")
-
   def main(args: Array[String]): Unit = {
     require(args.length == 4, "Provide parameters in this order: bidsPath, motelsPath, exchangeRatesPath, outputBasePath")
 
@@ -21,21 +19,15 @@ object MotelsHomeRecommendation {
     val exchangeRatesPath = args(2)
     val outputBasePath = args(3)
 
-    val sc = new SparkContext(getSparkConfiguration())
+    val conf = new SparkConf()
+      .setAppName("motels-home-recommendation")
+      .setMaster("local[*]")
+
+    val sc = new SparkContext(conf)
 
     processData(sc, bidsPath, motelsPath, exchangeRatesPath, outputBasePath)
 
     sc.stop()
-  }
-
-  private def getSparkConfiguration(): SparkConf = {
-    val conf = new SparkConf()
-      .setAppName("motels-home-recommendation")
-
-    System.setProperty("hadoop.home.dir", "C:\\Libraries\\WinUtils")
-    conf.setMaster("local[*]")
-
-    conf
   }
 
   def processData(sc: SparkContext, bidsPath: String, motelsPath: String, exchangeRatesPath: String, outputBasePath: String) = {
