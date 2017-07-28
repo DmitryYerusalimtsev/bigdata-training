@@ -178,5 +178,6 @@
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-minicluster:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.hadoop:hadoop-mapreduce-client-hs:2.6.0" level="project" />
     <orderEntry type="library" name="scala-sdk-2.12.2" level="application" />
+    <orderEntry type="library" name="scala-sdk-2.10.6" level="application" />
   </component>
 </module>

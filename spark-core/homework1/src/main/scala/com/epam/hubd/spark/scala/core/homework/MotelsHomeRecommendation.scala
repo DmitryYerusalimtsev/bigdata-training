@@ -1,6 +1,8 @@
 package com.epam.hubd.spark.scala.core.homework
 
-import com.epam.hubd.spark.scala.core.homework.domain.{BidError, BidItem, EnrichedItem}
+import java.math.MathContext
+
+import com.epam.hubd.spark.scala.core.homework.domain._
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -8,6 +10,8 @@ object MotelsHomeRecommendation {
 
   val ERRONEOUS_DIR: String = "erroneous"
   val AGGREGATED_DIR: String = "aggregated"
+
+  //val isIDE = ManagementFactory.getRuntimeMXBean.getInputArguments.toString.contains("IntelliJ IDEA")
 
   def main(args: Array[String]): Unit = {
     require(args.length == 4, "Provide parameters in this order: bidsPath, motelsPath, exchangeRatesPath, outputBasePath")
@@ -17,11 +21,21 @@ object MotelsHomeRecommendation {
     val exchangeRatesPath = args(2)
     val outputBasePath = args(3)
 
-    val sc = new SparkContext(new SparkConf().setAppName("motels-home-recommendation"))
+    val sc = new SparkContext(getSparkConfiguration())
 
     processData(sc, bidsPath, motelsPath, exchangeRatesPath, outputBasePath)
 
     sc.stop()
+  }
+
+  private def getSparkConfiguration(): SparkConf = {
+    val conf = new SparkConf()
+      .setAppName("motels-home-recommendation")
+
+    System.setProperty("hadoop.home.dir", "C:\\Libraries\\WinUtils")
+    conf.setMaster("local[*]")
+
+    conf
   }
 
   def processData(sc: SparkContext, bidsPath: String, motelsPath: String, exchangeRatesPath: String, outputBasePath: String) = {
@@ -74,24 +88,107 @@ object MotelsHomeRecommendation {
   }
 
   def getRawBids(sc: SparkContext, bidsPath: String): RDD[List[String]] = {
-    val initialRDD = sc.textFile(bidsPath)
-    initialRDD.map(s => s.split(',').toList)
+    readRDD(sc, bidsPath)
   }
 
   def getErroneousRecords(sc: SparkContext, rawBids: RDD[List[String]]): RDD[String] = {
+
+    val dateIdx = Constants.BIDS_HEADER.indexOf("BidDate")
+
     val errorsRDD = rawBids.filter(bid => bid(2).startsWith("ERROR_"))
-      .map(bid => BidError(bid(1), bid(2)))
+      .map(bid => BidError(bid(dateIdx), bid(2)))
 
     val errorsCountedRDD = errorsRDD.countByValue()
-    val result = errorsCountedRDD.map(raw => s"${raw._1.toString},${raw._2}")
-    sc.parallelize(result.toSeq)
+    val result = errorsCountedRDD.map(raw => s"${raw._1.toString},${raw._2}\r\n")
+    val sortedResult = result.toSeq.sortWith(_ < _)
+    sc.parallelize(sortedResult)
   }
 
-  def getExchangeRates(sc: SparkContext, exchangeRatesPath: String): Map[String, Double] = ???
+  def getExchangeRates(sc: SparkContext, exchangeRatesPath: String): Map[String, Double] = {
+    val initialRDD = readRDD(sc, exchangeRatesPath)
 
-  def getBids(rawBids: RDD[List[String]], exchangeRates: Map[String, Double]): RDD[BidItem] = ???
+    val validFromIdx = Constants.EXCHANGE_RATES_HEADER.indexOf("ValidFrom")
+    val excRateIdx = Constants.EXCHANGE_RATES_HEADER.indexOf("ExchangeRate")
 
-  def getMotels(sc: SparkContext, motelsPath: String): RDD[(String, String)] = ???
+    val map = initialRDD.map({
+      r => (new String(r(validFromIdx)), r(excRateIdx).toDouble)
+    }).collectAsMap().toMap
 
-  def getEnriched(bids: RDD[BidItem], motels: RDD[(String, String)]): RDD[EnrichedItem] = ???
+    map
+  }
+
+  def getBids(rawBids: RDD[List[String]], exchangeRates: Map[String, Double]): RDD[BidItem] = {
+    val idIdx = Constants.BIDS_HEADER.indexOf("MotelID")
+    val dateIdx = Constants.BIDS_HEADER.indexOf("BidDate")
+    val usIdx = Constants.BIDS_HEADER.indexOf("US")
+    val caIdx = Constants.BIDS_HEADER.indexOf("CA")
+    val mxIdx = Constants.BIDS_HEADER.indexOf("MX")
+
+    val focusRDD = rawBids.filter(bid => !bid(2).startsWith("ERROR_"))
+      .map(r => List(r(idIdx), r(dateIdx), r(usIdx), r(caIdx), r(mxIdx)))
+
+    val bidsListRDD = focusRDD.map({ r =>
+      val rate = exchangeRates(r(1))
+
+      def create = createBidItem(r(0), r(1), rate) _
+
+      List(
+        create("US", r(2)),
+        create("CA", r(3)),
+        create("MX", r(4))
+      ).flatten
+    })
+
+    bidsListRDD.flatMap(r => r)
+  }
+
+  def getMotels(sc: SparkContext, motelsPath: String): RDD[(String, String)] = {
+    val initialRDD = readRDD(sc, motelsPath)
+
+    val idIdx = Constants.MOTELS_HEADER.indexOf("MotelID")
+    val nameIdx = Constants.MOTELS_HEADER.indexOf("MotelName")
+
+    initialRDD.map(r => (r(idIdx), r(nameIdx)))
+  }
+
+  def getEnriched(bids: RDD[BidItem], motels: RDD[(String, String)]): RDD[EnrichedItem] = {
+    val keyedBidsRDD = bids.map(b => (b.motelId, b))
+    val joinedRDD = keyedBidsRDD.join(motels)
+
+    joinedRDD.map(r => {
+      val id = r._1
+      val name = r._2._2
+      val bid = r._2._1
+      EnrichedItem(id, name, bid.bidDate, bid.loSa, bid.price)
+    })
+  }
+
+  // Private helpers.
+
+  private def readRDD(sc: SparkContext, path: String): RDD[List[String]] = {
+    sc.textFile(path)
+      .map(s => s.split(Constants.DELIMITER).toList)
+  }
+
+  private def createBidItem(id: String, date: String, rate: Double)
+                           (loSa: String, price: String): Option[BidItem] = {
+
+    val formattedDate = convertDateFormat(date)
+
+    !isEmpty(price) match {
+      case true => {
+        val exchanged = price.toDouble * rate
+        val bd = BigDecimal(exchanged)
+        val rounded = bd.round(new MathContext(3)).doubleValue()
+
+        Some(BidItem(id, formattedDate, loSa, rounded))
+      }
+      case false => None
+    }
+  }
+
+  private def convertDateFormat(date: String): String = {
+    val dt = Constants.INPUT_DATE_FORMAT.parseDateTime(date)
+    Constants.OUTPUT_DATE_FORMAT.print(dt)
+  }
 }

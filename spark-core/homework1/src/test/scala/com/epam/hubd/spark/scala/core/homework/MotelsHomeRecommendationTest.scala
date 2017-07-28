@@ -70,7 +70,7 @@ class MotelsHomeRecommendationTest {
       )
     )
 
-    val erroneousRecords = MotelsHomeRecommendation.getErroneousRecords(rawBids)
+    val erroneousRecords = MotelsHomeRecommendation.getErroneousRecords(sc, rawBids)
 
     RDDComparisons.assertRDDEquals(expected, erroneousRecords)
   }
