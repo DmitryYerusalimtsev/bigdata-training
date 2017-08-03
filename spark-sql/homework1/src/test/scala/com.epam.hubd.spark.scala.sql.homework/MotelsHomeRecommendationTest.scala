@@ -51,7 +51,7 @@ class MotelsHomeRecommendationTest {
   }
 
   private def runIntegrationTest() = {
-    MotelsHomeRecommendation.processData(sqlContext, INPUT_BIDS_INTEGRATION, INPUT_MOTELS_INTEGRATION, INPUT_EXCHANGE_RATES_INTEGRATION, outputFolder.getAbsolutePath)
+    MotelsHomeRecommendation.processData(INPUT_BIDS_INTEGRATION, INPUT_MOTELS_INTEGRATION, INPUT_EXCHANGE_RATES_INTEGRATION, outputFolder.getAbsolutePath)
   }
 
   private def assertRddTextFiles(expectedPath: String, actualPath: String) = {
@@ -67,7 +67,7 @@ class MotelsHomeRecommendationTest {
 
 object MotelsHomeRecommendationTest {
   var sc: SparkContext = null
-  var sqlContext: HiveContext = null
+  implicit var sqlContext: HiveContext = null
 
   @BeforeClass
   def beforeTests() = {
